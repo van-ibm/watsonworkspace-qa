@@ -62,8 +62,13 @@ function answer (userId, annotation, searchableData) {
   logger.info(`Answering question using data ${JSON.stringify(searchableData, null, 1)}`)
 
   // for example, let's pull concepts from dbpedia
+  const text = 'Sed aliquet orci non ullamcorper condimentum. Quisque id mauris commodo, aliquam urna quis, suscipit nisi. Quisque faucibus erat id accumsan.'
+
   searchableData.concepts.forEach(concept => {
-    cards.push(UI.card(concept.text, '', '', [
+    const subtitleRand = Math.random() * (25 - 10) + 10
+    const textRand = Math.random() * (140 - 50) + 50
+
+    cards.push(UI.card(concept.text, text.substring(0, subtitleRand), text.substring(0, textRand), [
       UI.cardButton('More')
     ]))
   })
